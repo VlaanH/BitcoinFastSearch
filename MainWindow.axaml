@@ -1,0 +1,150 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="BitcoinFastSearch.MainWindow"
+        WindowStartupLocation="CenterOwner"
+        Title="BitcoinFastSearch"
+        MinWidth="750"
+        MinHeight="450"
+        >
+
+        
+        <Grid>
+                <Grid.RowDefinitions >
+                 
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                </Grid.RowDefinitions >
+                <Grid.ColumnDefinitions >
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                </Grid.ColumnDefinitions >
+           
+                <TextBox  Margin="5,5,5,0"
+                          Grid.Row="0" Grid.ColumnSpan="4" 
+                          Watermark=""
+                          HorizontalContentAlignment="Center"
+                          FontSize="40"
+                          ></TextBox>
+
+                <ProgressBar Grid.Row="1" Grid.Column="0"  
+                             Grid.ColumnSpan="4"
+                             Margin="10,0,10,0"
+                             Height="20"
+                             HorizontalAlignment="Stretch"
+                ></ProgressBar>
+
+                
+             
+                <Grid Grid.Row="1" Grid.Column="0" Margin="0,0,10,0" Grid.ColumnSpan="4"
+                      VerticalAlignment="Bottom">
+                        <Grid.ColumnDefinitions >
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                        </Grid.ColumnDefinitions >
+                        
+                        
+                          
+                        <TextBox Grid.Column="0" 
+                                 Margin="10,0,75,0"
+                                 Watermark="Path to the file with addresses"
+                                 Name="TextBoxPathAddresses"
+                                 ></TextBox>
+                        <Button Grid.Column="0" HorizontalAlignment="Right" Click="Button_OnClick" Content="Patch.."></Button>  
+                       
+           
+               
+                        <TextBox Grid.Column="1"  
+                                 Margin="10,0,75,0" 
+                                 Watermark="Where to save the result"
+                                 Name="TextBoxPathResult"
+                                 ></TextBox>
+                        <Button Grid.Column="1" HorizontalAlignment="Right" Content="Patch.."></Button>
+
+
+                                
+                                
+                </Grid>
+
+                        <Grid Grid.Row="2" Grid.Column="3" 
+                              HorizontalAlignment="Center"
+                        
+                              >
+                                
+                                <Grid.RowDefinitions >
+                 
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                </Grid.RowDefinitions >
+                                
+                                <Slider Grid.Row="0" Grid.Column="0"
+                                        Grid.RowSpan="2"
+                                        Name="DelaySlider"
+                                        Margin="0,10,0,20"
+                                        Orientation="Vertical"
+                                        Maximum="15"
+                                        Minimum="1"
+                                        TickFrequency="1"
+                                        IsSnapToTickEnabled="True"
+                                        HorizontalAlignment="Right"
+                                ></Slider>
+                                
+                              
+                                <Label 
+                                        Grid.Column="0"
+                                        Grid.Row="1" 
+                                        Name="LabelSlider"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Bottom"
+                                        Content=
+                                        "{Binding ElementName=DelaySlider,Path=Value }"
+                                        
+                                ></Label>  
+                                <Label Grid.Column="0"
+                                       Grid.Row="1" 
+                                       Content="ms"
+                                       VerticalAlignment="Bottom"
+                                       Margin="40,0,5,0"
+                                       ></Label>
+                        </Grid>
+                
+               
+                
+             
+    
+                        
+                     <Label
+                             Grid.Row="2" Grid.Column="0" Content="Error:" 
+                             HorizontalAlignment="Stretch" 
+                             VerticalAlignment="Bottom"
+                     ></Label>
+                        
+                        
+    
+                
+                
+                <Button 
+                        Grid.Row="2" Grid.Column="1"  
+                        Grid.ColumnSpan="2"
+                        HorizontalAlignment="Stretch" VerticalAlignment="Bottom"
+                        VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
+                        Content="Start Scan"
+                       
+
+                        FontSize="20"
+                ></Button>   
+             
+            
+           
+                
+        </Grid>
+        
+        
+        
+</Window>
