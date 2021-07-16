@@ -56,7 +56,7 @@
                                  Watermark="Path to the file with addresses"
                                  Name="TextBoxPathAddresses"
                                  ></TextBox>
-                        <Button Grid.Column="0" HorizontalAlignment="Right" Click="Button_OnClick" Content="Patch.."></Button>  
+                        <Button Grid.Column="0" HorizontalAlignment="Right" Click="ButtonPathAddresses_OnClick" Content="Patch.."></Button>  
                        
            
                
@@ -65,7 +65,7 @@
                                  Watermark="Where to save the result"
                                  Name="TextBoxPathResult"
                                  ></TextBox>
-                        <Button Grid.Column="1" HorizontalAlignment="Right" Content="Patch.."></Button>
+                        <Button Grid.Column="1" HorizontalAlignment="Right" Click="ButtonPathResult_OnClick" Content="Patch.."></Button>
 
 
                                 

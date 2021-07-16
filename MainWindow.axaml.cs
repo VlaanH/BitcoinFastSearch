@@ -22,12 +22,19 @@ namespace BitcoinFastSearch
             AvaloniaXamlLoader.Load(this);
         }
 
-        private async void Button_OnClick(object? sender, RoutedEventArgs e)
+        private async void ButtonPathAddresses_OnClick(object? sender, RoutedEventArgs e)
         {
             var rootWindow = (Window) this.VisualRoot;
 
             this.FindControl<TextBox>("TextBoxPathAddresses").Text = await Dialog.GetFilePatch(rootWindow);
             
+        }
+
+        private async void ButtonPathResult_OnClick(object? sender, RoutedEventArgs e)
+        {
+            var rootWindow = (Window) this.VisualRoot;
+
+            this.FindControl<TextBox>("TextBoxPathResult").Text = await Dialog.GetFolderPatch(rootWindow);
         }
     }
 }
