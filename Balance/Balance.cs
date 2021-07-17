@@ -5,9 +5,9 @@ using System.Text.RegularExpressions;
 
 namespace BitcoinFastSearch.Balance
 {
-    public class Balance
+    public class BalanceAll
     {
-        public class BalnceData
+        public class BalanceData
         {
             public string AllBalance{ get; set; }
             public  string ExistBalance{ get; set; }
@@ -26,7 +26,7 @@ namespace BitcoinFastSearch.Balance
         }
         
         
-        public static BalnceData Get(string address)
+        public static BalanceData Get(string address)
         {
            
             string res = default;
@@ -46,7 +46,7 @@ namespace BitcoinFastSearch.Balance
 
             
             
-            BalnceData balnceData = new BalnceData()
+            BalanceData balnceData = new BalanceData()
             {
                 AllBalance = parsingJsonDataAllBalance.funded_txo_sum.ToString(),
                 ExistBalance = parsingJsonDataExistBalance.funded_txo_sum.ToString()

@@ -4,6 +4,8 @@ using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
 using BitcoinFastSearch.FileDialog;
+using BitcoinFastSearch.Balance;
+using BitcoinFastSearch.AddressData;
 
 namespace BitcoinFastSearch
 {
@@ -35,6 +37,14 @@ namespace BitcoinFastSearch
             var rootWindow = (Window) this.VisualRoot;
 
             this.FindControl<TextBox>("TextBoxPathResult").Text = await Dialog.GetFolderPatch(rootWindow);
+        }
+
+        private void ButtonScan_OnClick(object? sender, RoutedEventArgs e)
+        {
+            string filePatch = this.FindControl<TextBox>("TextBoxPathAddresses").Text;
+
+            var addressDataList = Address.Read(filePatch);
+           
         }
     }
 }

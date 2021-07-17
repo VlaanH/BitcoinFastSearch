@@ -73,9 +73,7 @@
                 </Grid>
 
                         <Grid Grid.Row="2" Grid.Column="3" 
-                              HorizontalAlignment="Center"
-                        
-                              >
+                              HorizontalAlignment="Center">
                                 
                                 <Grid.RowDefinitions >
                  
@@ -135,9 +133,8 @@
                         HorizontalAlignment="Stretch" VerticalAlignment="Bottom"
                         VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
                         Content="Start Scan"
-                       
-
                         FontSize="20"
+                        Click="ButtonScan_OnClick"
                 ></Button>   
              
             
