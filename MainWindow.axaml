@@ -30,14 +30,23 @@
                           Grid.Row="0" Grid.ColumnSpan="4" 
                           Watermark=""
                           HorizontalContentAlignment="Center"
-                          FontSize="40"
+                          FontSize="40" 
+                          Name="LastAddresses"
                           ></TextBox>
 
+                <Label Grid.Row="1" Grid.Column="0" 
+                       Grid.ColumnSpan="4"
+                       HorizontalContentAlignment="Center"
+                       Margin="0,42,0,0"
+                       Foreground="#0f7"
+                       Name="MessageLabel"
+                ></Label>
                 <ProgressBar Grid.Row="1" Grid.Column="0"  
                              Grid.ColumnSpan="4"
                              Margin="10,0,10,0"
                              Height="20"
                              HorizontalAlignment="Stretch"
+                             Name="ProgressBar"
                 ></ProgressBar>
 
                 
@@ -86,8 +95,9 @@
                                         Name="DelaySlider"
                                         Margin="0,10,0,20"
                                         Orientation="Vertical"
-                                        Maximum="15"
-                                        Minimum="1"
+                                        Maximum="25"
+                                        Minimum="5"
+                                        Value="7"
                                         TickFrequency="1"
                                         IsSnapToTickEnabled="True"
                                         HorizontalAlignment="Right"
@@ -121,6 +131,7 @@
                              Grid.Row="2" Grid.Column="0" Content="Error:" 
                              HorizontalAlignment="Stretch" 
                              VerticalAlignment="Bottom"
+                             Name="ErrorLabel"
                      ></Label>
                         
                         

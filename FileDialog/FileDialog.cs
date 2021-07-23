@@ -10,7 +10,7 @@ namespace BitcoinFastSearch.FileDialog
         public static async Task<string?> GetFilePatch(Window mainWindow)
         {
             var dialog = new OpenFileDialog();
-            //(Window)this.VisualRoot
+            
             var result = await dialog.ShowAsync(mainWindow);
 
             if (result != null)
