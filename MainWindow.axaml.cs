@@ -50,10 +50,12 @@ namespace BitcoinFastSearch
         }
 
 
-         async void ShowProgress(int progress,int max)
+         async void ShowProgress(int progress,int max,int result)
         {
             await Task.Delay(1000);
            this.FindControl<Label>("MessageLabel").Content=_i+" / "+max+" / key "+(_i-progress)+"S";
+           
+           this.FindControl<Label>("ResultLabel").Content = "Result:"+result;
         }
 
 
@@ -97,7 +99,7 @@ namespace BitcoinFastSearch
 
               var delay= this.FindControl<Slider>("DelaySlider").Value;
 
-                    ShowProgress(_i,addressDataList.Count);
+                    ShowProgress(_i,addressDataList.Count,addressWithBalances.Count);
 
                    
                     new Thread(() =>
