@@ -149,6 +149,7 @@
                 <Button 
                         Grid.Row="2" Grid.Column="1"  
                         Grid.ColumnSpan="2"
+                        Name="ButtonScan"
                         HorizontalAlignment="Stretch" VerticalAlignment="Bottom"
                         VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
                         Content="Start Scan"

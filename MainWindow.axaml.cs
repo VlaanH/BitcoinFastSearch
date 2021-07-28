@@ -157,7 +157,7 @@ namespace BitcoinFastSearch
             
             _buttonPosition = false;
          
-
+            this.FindControl<Button>("ButtonScan").Content = "Start Scan";
             
         }
 
@@ -171,15 +171,18 @@ namespace BitcoinFastSearch
         }
 
 
-        private async void ButtonScan_OnClick(object? sender, RoutedEventArgs e)
+        private void ButtonScan_OnClick(object? sender, RoutedEventArgs e)
         {
+           
             if (FieldsEmpty())
             { 
                 this.FindControl<Label>("MessageLabel").Content = "You have not completed all the fields";
             }
             else
-            { 
+            {
+                this.FindControl<Button>("ButtonScan").Content = "Stop";
                 Scan();
+              
             }
            
         }
