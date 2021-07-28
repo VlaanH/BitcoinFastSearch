@@ -66,94 +66,107 @@ namespace BitcoinFastSearch
 
         async void Scan()
         {
-            
-            int _error = 0;
-            _i = 0;
-           
             if (_buttonPosition == true)
+            {
                 _buttonPosition = false;
+                this.FindControl<ToggleSwitch>("RepeatSwitch").IsChecked = false;
+            }
             else
                 _buttonPosition = true;
 
-     
-           
-            string filePatch = this.FindControl<TextBox>("TextBoxPathAddresses").Text;
-
-            List<Address.Data> addressWithBalances = new List<Address.Data>(); 
-            
-            
-            
-            List<Address.Data> addressDataList = new List<Address.Data>(); 
-         
-            
-            
-            await Task.Run(() =>
+            do
             {
-            
-                addressDataList = Address.Read(filePatch);
-                
-            });
+                int _error = 0;
+                _i = 0;
 
-            for (; _i<=addressDataList.Count & _buttonPosition==true; _i++)
-            {
 
-              var delay= this.FindControl<Slider>("DelaySlider").Value;
 
-                    ShowProgress(_i,addressDataList.Count,addressWithBalances.Count);
 
-                   
+
+                string filePatch = this.FindControl<TextBox>("TextBoxPathAddresses").Text;
+
+                List<Address.Data> addressWithBalances = new List<Address.Data>();
+
+
+
+                List<Address.Data> addressDataList = new List<Address.Data>();
+
+
+
+                await Task.Run(() =>
+                {
+
+                    addressDataList = Address.Read(filePatch);
+
+                });
+
+                for (; _i <= addressDataList.Count & _buttonPosition == true; _i++)
+                {
+
+                    var delay = this.FindControl<Slider>("DelaySlider").Value;
+
+                    ShowProgress(_i, addressDataList.Count, addressWithBalances.Count);
+
+
                     new Thread(() =>
                     {
                         try
                         {
                             int i = _i;
-                            var res=BalanceAll.Get(addressDataList[i].Address);
+                            var res = BalanceAll.Get(addressDataList[i].Address);
 
-                            if (res.AllBalance!="0")
+                            if (res.AllBalance != "0")
                             {
                                 addressWithBalances.Add(addressDataList[i]);
                             }
                         }
                         catch (Exception exception)
                         {
-                            
+
                             _error++;
-                   
+
                         }
                     }).Start();
 
-                
-                  
 
-                   
+                    if (_error > 150)
+                    {
 
-                    
-                    
-                    
-                    if (_i > 3 & _i<addressDataList.Count-3)
+                        _buttonPosition = false;
+                    }
+
+
+
+
+
+
+                    if (_i > 3 & _i < addressDataList.Count - 3)
                         this.FindControl<TextBox>("LastAddresses").Text = addressDataList[_i].Address + "\n" +
-                                                                                addressDataList[_i+1].Address + "\n" +
-                                                                                addressDataList[_i+2].Address;
-                        
-                    
-                
+                                                                          addressDataList[_i + 1].Address + "\n" +
+                                                                          addressDataList[_i + 2].Address;
+
+
+
                     try
                     {
-                        this.FindControl<ProgressBar>("ProgressBar").Value=(((double)_i/addressDataList.Count)*100); 
-                        this.FindControl<Label>("ErrorLabel").Content="Error:"+_error;
-                    
+                        this.FindControl<ProgressBar>("ProgressBar").Value =
+                            (((double) _i / addressDataList.Count) * 100);
+                        this.FindControl<Label>("ErrorLabel").Content = "Error:" + _error;
+
                     }
                     catch (Exception exception)
                     {
-                 
+
                     }
-                
+
                     await Task.Delay(Convert.ToInt32(delay));
 
-            }
+                }
 
-         
-            Address.Write(this.FindControl<TextBox>("TextBoxPathResult").Text ,addressWithBalances);
+
+                Address.Write(this.FindControl<TextBox>("TextBoxPathResult").Text, addressWithBalances);
+                
+            } while ((bool) this.FindControl<ToggleSwitch>("RepeatSwitch").IsChecked == true);
             
             _buttonPosition = false;
          

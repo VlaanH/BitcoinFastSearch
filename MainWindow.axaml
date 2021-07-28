@@ -82,7 +82,7 @@
                 </Grid>
 
                         <Grid Grid.Row="2" Grid.Column="3" 
-                              HorizontalAlignment="Center">
+                              HorizontalAlignment="Right">
                                 
                                 <Grid.RowDefinitions >
                  
@@ -126,7 +126,14 @@
                 
              
     
-                        
+                        <ToggleSwitch  
+                                Grid.Row="2" Grid.Column="3" 
+                                Name="RepeatSwitch"
+                                Margin="15,0,5,0"
+                                VerticalAlignment="Bottom"
+                                OffContent="Off repeat"
+                                OnContent="On repeat"
+                                ></ToggleSwitch>
                 
                         <Label
                              Grid.Row="2" Grid.Column="0" Content="Error:" 
